@@ -1,0 +1,130 @@
+<!-- <input type="text" ng-model="name"/>
+<button ng-click="login()">LOGIN</button>
+<button ng-click="auth()">Connect with Facebook</button> -->
+<div style="width:100%;height:97px;">
+  <div style="width:100%;height:23px;padding: 0 0 0 4%;background-color:#f3f7f8;">
+    <div style="width:30%;height:100%;float:left;padding:0px 5px;">
+      <span style="background-color:#dd4b39;color:#fff;cursor:pointer;
+        font-size:12px;text-align:center;padding: 2px 3px;border-radius:3px;">
+        Use FAB100 to get 100 OFF on First Order
+      </span>
+    </div>
+    <div style="width:60%;height:100%;float:right;text-align:right;padding: 0 4%;">
+      <span style="color:#828282;text-align:center;padding: 2px 3px;font-size:12px;cursor:pointer;">
+        Track Order
+      </span>
+      <span style="color:#828282;text-align:center;padding: 2px 3px;font-size:12px;">|</span>
+      <span style="color:#828282;text-align:center;padding: 2px 3px;font-size:12px;cursor:pointer;">
+        Customer Care
+      </span>
+      <span style="color:#828282;text-align:center;padding: 2px 3px;font-size:12px;">|</span>
+      <span style="color:#828282;text-align:center;padding: 2px 3px;font-size:12px;cursor:pointer;">
+        Pilot Login
+      </span>
+      <span style="color:#828282;text-align:center;padding: 2px 3px;font-size:12px;">|</span>
+      <span style="color:#828282;text-align:center;padding: 2px 3px;font-size:12px;cursor:pointer;">
+        Tailor Login
+      </span>
+    </div>
+  </div>
+  <div style="width:100%;height:74px;padding:0 0 0 4%;background-color:#fff;border-bottom:1px solid #deeaee;">
+    <div style="width:23px;height:21px;line-height:74px;float:left;cursor:pointer;">
+      <i class="fa fa-bars" aria-hidden="true" style="font-size:20px;"></i>
+    </div>
+    <div style="width:170px;height:30px;line-height:74px;float:left;cursor:pointer;">
+    </div>
+    <div style="width:53%;height:30px;line-height:74px;float:left;cursor:pointer;">
+    </div>
+    <div style="width:110px;height:30px;line-height:74px;float:left;cursor:pointer;">
+      <i class="fa fa-suitcase" aria-hidden="true" style="font-size:20px;"></i>
+      <span style="font-size:14px;padding:2px 3px;">My Wallet</span>
+    </div>
+    <div style="width:100px;height:30px;line-height:74px;float:left;cursor:pointer;">
+      <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:20px;"></i>
+      <span style="font-size:14px;padding:2px 3px;">My Cart</span>
+    </div>
+    <div style="width:130px;height:30px;line-height:74px;float:left;cursor:pointer;"
+      ng-click="openModal()">
+      <i class="fa fa-user" aria-hidden="true" style="font-size:20px;"></i>
+      <span style="font-size:14px;padding:2px 3px;" ng-if="!isLoggedIn">Log In/Sign Up</span>
+      <span style="font-size:14px;padding:2px 3px;" ng-if="isLoggedIn">{{UserName}}</span>
+    </div>
+    <div style="width:74px;height:74px;float:left;border-left:1px solid #deeaee;
+      text-align:center;padding:5px 0;line-height:74px;cursor:pointer;">
+      <i class="fa fa-heart-o" style="font-size:37px;"></i>
+    </div>
+  </div>
+</div>
+<div class="ui small modal loginmodal" style="padding: 20px 25px;">
+  <div style="position:absolute;top:15px;right:15px;cursor:pointer;">
+    <i class="fa fa-times" aria-hidden="true"></i>
+  </div>
+  <div style="height:74px;width:100%;">
+    <div class="sliding-middle-out" ng-click="modalTab('login')" ng-class="{'active': login_active}">
+      Login In
+    </div>
+    <div class="sliding-middle-out" ng-click="modalTab('signup')" ng-class="{'active': signup_active}">
+      Sign Up
+    </div>
+  </div>
+  <div style="height:235px;width:100%;padding: 0 30px;" ng-show="login_active">
+      <md-input-container class="md-block" flex-gt-sm style="margin:0;height:39px;">
+        <label>Mobile Number or Email</label>
+        <input ng-model="user.username">
+      </md-input-container>
+      <div style="width:100%;text-align:right;font-size:10px;color:#dd4b39;height:39px;line-height:0px;cursor:pointer;">
+        Login with OTP
+      </div>
+      <md-input-container class="md-block" flex-gt-sm style="margin:0;height:39px;">
+        <label>Stitcho Password</label>
+        <input ng-model="user.password" type="password">
+      </md-input-container>
+      <div style="width:100%;text-align:right;font-size:10px;color:#dd4b39;line-height:0px;cursor:pointer;height:39px;">
+        Forgot Password?
+      </div>
+      <md-checkbox ng-checked="expire" ng-click="changeExpiry()">
+       Keep me Signed In
+      </md-checkbox>
+      <div style="width:100%;">
+        <md-button class="md-raised md-primary" style="margin:0 auto;width:100%;background-color:#dd4b39;"
+          ng-click="secureLogin()">
+          <i class="fa fa-lock"></i>
+          <span style="padding:0 7px">Secure Login</span>
+        </md-button>
+      </div>
+      <div style="font-size:9px;text-align:left;width:100%;line-height:25px;">
+        By Logging in you agree to our
+        <span style="color:#dd4b39;">T&C</span> and <span style="color:#dd4b39;">Privacy Policy.</span>
+      </div>
+  </div>
+  <div style="height:235px;width:100%;padding: 0 30px;" ng-show="signup_active">
+    <md-input-container class="md-block" flex-gt-sm style="margin:0;">
+      <label>Mobile Number</label>
+      <input ng-model="signup.username">
+    </md-input-container>
+    <md-input-container class="md-block" flex-gt-sm style="margin:0;">
+      <label>Stitcho Password</label>
+      <input ng-model="signup.password">
+    </md-input-container>
+    <div style="width:100%;">
+      <md-button class="md-raised md-primary" style="margin:0 auto;width:100%;background-color:#dd4b39;">
+        <i class="fa fa-lock"></i>
+        <span style="padding:0 7px">Create Account</span>
+      </md-button>
+    </div>
+    <div style="font-size:9px;text-align:left;width:100%;line-height:25px;">
+      By Signing Up you agree to our
+      <span style="color:#dd4b39;">T&C</span> and <span style="color:#dd4b39;">Privacy Policy.</span>
+    </div>
+  </div>
+  <span style="position:absolute;top:320px;left:190px;padding:0 10px;background-color:#fff;">OR</span>
+  <div style="width:100%;height:85px;border-top:1px solid #deeaee;padding: 25px 30px;">
+    <md-button class="md-raised md-primary" style="margin:0 auto;width:100%;background-color:#48629b;"
+      ng-click="fblogin()">
+      <i class="fa fa-facebook"></i>
+      <span style="padding:0 7px">LOGIN WITH FACEBOOK</span>
+    </md-button>
+  </div>
+</div>
+{{welcomeMsg}}
+<button ng-click="fblogout()">Log Out</button>
