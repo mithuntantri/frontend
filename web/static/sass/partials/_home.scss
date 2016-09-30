@@ -36,13 +36,13 @@ $header-text-color: #fff;
   padding: 8px 0px;
 }
 .cart-fab-section{
-  width:111px;
+  width:120px;
   float:left;
   height: 100%;
   border-left: 1px solid $orange-contrast;
 }
 .profile-fab-section{
-  width: 129px;
+  width: 120px;
   height:100%;
   float: left;
   border-left: 1px solid $orange-contrast;
@@ -119,4 +119,28 @@ li.fab-categories-list:hover{
   text-align: left;
   font-size: 12px;
   padding-left: 9px;
+}
+.cart-fab-lbl{
+  width:70%;
+  float:left;
+  line-height: 49px;
+  text-align: center;
+}
+.cart-fab-icon{
+  width:30%;
+  float:left;
+  line-height: 49px;
+  text-align: center;
+}
+.profile-fab-lbl{
+  width:70%;
+  float:left;
+  line-height: 49px;
+  text-align: center;
+}
+.profile-fab-icon{
+  width:30%;
+  float:left;
+  line-height: 49px;
+  text-align: center;
 }

@@ -1,4 +1,4 @@
-angular.module("fabfit", ['ui.router', 'ngCookies', 'satellizer', 'ngMaterial', 'ngFacebook'])
+angular.module("fabfit", ['ui.router', 'ngCookies', 'satellizer', 'ngMaterial', 'ngFacebook', 'ngWebSocket'])
 .run(['$rootScope', '$state', '$stateParams', '$timeout', '$cookies',
     function($rootScope, $state, $stateParams, $timeout, $cookies) {
 
@@ -36,6 +36,45 @@ angular.module("fabfit", ['ui.router', 'ngCookies', 'satellizer', 'ngMaterial', 
       $state.go("login")
     })
 }])
+.factory('Messages',function ($websocket) {
+  var ws = $websocket.$new("ws://localhost:5900/")
+  var collection = [];
+
+  ws.onMessage(function(event) {
+   console.log('message: ', event);
+ });
+  ws.onError(function(event) {
+    console.log('connection Error', event);
+  });
+
+  ws.onClose(function(event) {
+    console.log('connection closed', event);
+  });
+
+  ws.onOpen(function() {
+    console.log('connection open');
+    ws.send('c:s');
+  });
+  return {
+    collection: collection,
+    status: function() {
+      return ws.readyState;
+    },
+    close: function () {
+      console.log('Closing Conne');
+      ws.$emit('close');
+    },
+    send: function(message) {
+      if (angular.isString(message)) {
+        ws.send(message);
+      }
+      else if (angular.isObject(message)) {
+        ws.send(JSON.stringify(message));
+      }
+    }
+
+  };
+})
 // A $http interceptor for injecting token and checking for token expiry
 .factory('tokenInterceptor', ['$q', '$rootScope', '$cookies',function($q, $rootScope, $cookies){
     var Interceptor = {

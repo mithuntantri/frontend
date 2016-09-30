@@ -17,7 +17,8 @@ exports.config={
             'bower_components/angular-messages/angular-messages.js',
             'bower_components/angular-material/angular-material.js',
             'bower_components/satellizer/dist/satellizer.js',
-            'bower_components/underscore/underscore.js'
+            'bower_components/underscore/underscore.js',
+            'bower_components/angular-websocket/dist/angular-websocket.js'
         ]
       },
       order : {
@@ -34,7 +35,8 @@ exports.config={
           'bower_components/angular-messages/angular-messages.js',
           'bower_components/angular-material/angular-material.js',
           'bower_components/satellizer/dist/satellizer.js',
-          'bower_components/underscore/underscore.js'
+          'bower_components/underscore/underscore.js',
+          'bower_components/angular-websocket/dist/angular-websocket.js',
         ]
       }
     },
